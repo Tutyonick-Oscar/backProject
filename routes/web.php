@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\viewsController;
 use Illuminate\Routing\ViewController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::get('/q-descriptions/{id}',[viewsController::class,'descriptions'])->name
 Route::post('/ask',[viewsController::class,'send_question']);
 Route::post('/answer/{id}',[viewsController::class,'send_answer']);
 Route::post('/q-descriptions/{id}',[viewsController::class,'comments']);
+Route::get('/login',[AuthController::class,'login'])->name('login');
+
