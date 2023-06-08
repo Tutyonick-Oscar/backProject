@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <script src="../Js/ui.js" defer></script>
+    <title>members</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap");
+      body {
+        background: linear-gradient(#2c3e50f9, #2d3a3a, #2c3e50);
+        width: 100%;
+        height: auto;
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+      }
+      .container .asked {
+        width: 100%;
+      }
+      .container {
+        width: 90%;
+      }
+      .sider-bar {
+        height: 100vh;
+        width: 20%;
+      }
+      .who-ask,
+      .loger {
+        border-radius: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col w-full">
+    <header>
+      <nav
+        class="navigation flex w-full h-14 items-center pl-5 bg-white fixed shadow-md z-10"
+      >
+        <div class="logo flex items-center bg-blue p-1.5 rounded w-52">
+          <h1 class="text-white text-lg font-medium">FongOverFlow</h1>
+          <img
+            src="../photos/logoWhite.png"
+            width="30"
+            height="30"
+            alt=""
+            class=""
+          />
+        </div>
+        <div class="search p-4 relative w-1/2">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full px-10 pr-40 ml-16 border border-solid border-blue rounded outline-none py-1 placeholder:-mr-16 hover:shadow-lg hover:py-2"
+          />
+          <i
+            class="fa-solid fa-magnifying-glass text-blue font-medium absolute top-7 left-24"
+          ></i>
+        </div>
+        <div class="connect flex items-center px-20 justify-between gap-10">
+          <div class="history">
+            <h1 class="text-blue font-medium underline">History</h1>
+          </div>
+          <i
+            class="fa-solid fa-question text-white bg-blue rounded-full p-2 cursor-pointer"
+          ></i>
+          <button
+            class="logout cursor-pointer text-blue font-bold bg-grey w-1/2 rounded px-4 py-2 hover:bg-gray"
+          >
+            Log Out
+          </button>
+          <div
+            class="profil flex gap-2 border-blue border-solid bg-blue_f border w-52 rounded-3xl px-2 items-center"
+          >
+            <img
+              src="../photos/Amicus.jpg"
+              alt=""
+              width="50"
+              height="50"
+              class="rounded-full loger"
+            />
+            <p class="text-blue font-bold">Oscar</p>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <br />
+    <br />
+    <main class="flex w-full relative">
+      <div
+        class="sider-bar fixed overflow-y-scroll p-8 pb-20 border-r border-grey border-solid h-screen w-96 flex flex-col"
+      >
+        <a
+          href="home.html"
+          class="transition-all py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-house px-3 text-white"></i>Home</a
+        >
+        <a
+          href=""
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-question px-3 text-white"></i>Questions</a
+        >
+        <a
+          href="#"
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-users px-3 text-white"></i>Members</a
+        >
+        <a
+          href="#"
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-regular fa-message px-3 text-white"></i>Messages</a
+        >
+        <a
+          href="#"
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-inbox px-3 text-white"></i>privite Contact</a
+        >
+        <br />
+        <h1 class="text-white font-medium ml-2">TAGS</h1>
+        <div class="py-4 px-2 flex flex-col gap-2">
+          <div class="flex gap-1">
+            <a
+              href=""
+              class="px-6 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >html</a
+            >
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >css</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Java</a
+            >
+            <a
+              href=""
+              class="px-8 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >JavaScript</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-2 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >php</a
+            >
+            <a
+              href=""
+              class="px-6 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Taiwindcss</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Boostrap</a
+            >
+            <a
+              href=""
+              class="px-2 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >nodeJs</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Jquery</a
+            >
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Laravelphp</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="container ml-64 h-screen bg-white flex flex-col gap-10 px-8 py-4 font-light">
+        <div class="w-full h-auto flex gap-10">
+          <div class="w-1/3 h-48 border border-grey rounded-lg p-8 relative">
+            <img src="" alt="" width="100" height="100" class="rounded-full border border-blue_f -mt-4">
+            <h2 class="text-blue mt-4"><a href="#">Dev.name</a></h2>
+            <p class="text-grey ">full stack developer</p>
+            <small class="absolute right-2 bottom-2 text-blue">member since 2022</small>
+          </div>
+          <div class="w-1/3 h-48 border border-grey rounded-lg"></div>
+          <div class="w-1/3 h-48 border border-grey rounded-lg"></div>
+        </div>
+        <div class="w-full h-auto flex gap-10">
+          <div class="w-1/3 h-48 border border-grey rounded-lg"></div>
+          <div class="w-1/3 h-48 border border-grey rounded-lg"></div>
+          <div class="w-1/3 h-48 border border-grey rounded-lg"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

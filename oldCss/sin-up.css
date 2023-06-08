@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap");
+* {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(252, 255, 252, 0.7411764706);
+  padding: 20px 20px;
+}
+
+.container {
+  width: 100%;
+  height: 95vh;
+  display: flex;
+  animation: test 3s ease-out 2s 1;
+}
+.container .avatar {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(44, 62, 80, 0.9764705882), #2d3a3a, #2c3e50);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.container .avatar .logo {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+}
+.container .avatar .logo img {
+  width: 40px;
+  height: 40px;
+  margin-top: -5px;
+}
+.container .avatar .logo h3 {
+  color: rgba(252, 255, 252, 0.7411764706);
+}
+.container .avatar .img {
+  animation: test2 0.5s ease-in-out 5s 1;
+}
+.container .form {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0px 0px 20px #fff, 0px 0px 20px #e4e4e4;
+}
+.container .form .sing-in {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  transition: all 0.5s;
+}
+.container .form .sing-in p {
+  color: rgba(128, 128, 128, 0.897);
+}
+.container .form .sing-in p a {
+  transition: all 0.5s;
+  text-decoration: none;
+  color: #2c3e50;
+  border: 1px solid rgba(128, 128, 128, 0.897);
+  padding: 5px 25px;
+  border-radius: 13px;
+}
+.container .form .sing-in p a:hover {
+  background: linear-gradient(rgba(44, 62, 80, 0.9764705882), #2d3a3a, #2c3e50);
+  padding: 6px 26px;
+  color: rgba(252, 255, 252, 0.7411764706);
+}
+.container .form .formulary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 50px;
+  margin-top: 10%;
+  margin-left: -20%;
+}
+.container .form .formulary .register {
+  color: rgba(128, 128, 128, 0.897);
+  margin-top: -10px;
+}
+.container .form .formulary label {
+  margin-top: 50px;
+  font-size: 1.1em;
+}
+.container .form .formulary input {
+  padding: 5px 100px;
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.897);
+  color: #2c3e50;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+.container .form .formulary input:hover {
+  padding: 7px 100px;
+  border: 2px solid #2c3e50;
+}
+.container .form .formulary .submit {
+  padding: 10px 100px;
+  margin-top: 20px;
+  border-radius: 15px;
+  background: linear-gradient(rgba(44, 62, 80, 0.9764705882), #2d3a3a, #2c3e50);
+  border: none;
+  box-shadow: 5px 5px 10px;
+  color: rgba(252, 255, 252, 0.7411764706);
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.container .form .formulary .submit:hover {
+  transform: scale(1.1);
+}
+
+@keyframes test {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+@keyframes test2 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+.accounts {
+  display: flex;
+  gap: 20px;
+}
+.accounts .fa-brands {
+  color: #2c3e50;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 100%;
+}/*# sourceMappingURL=sin-up.css.map */

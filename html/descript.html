@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <script src="../Js/ui.js" defer></script>
+    <title>description</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap");
+      body {
+        width: 100%;
+        height: auto;
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container .asked {
+        width: 100%;
+      }
+      .sider-bar {
+        height: 100vh;
+        /* width: 20%; */
+        background: linear-gradient(#2c3e50f9, #2d3a3a, #2c3e50);
+      }
+      .who-ask,
+      .loger {
+        border-radius: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col w-full">
+    <header>
+      <nav
+        class="navigation sm:flex w-full sm:h-14 sm:items-center sm:pl-5 bg-white fixed shadow-md z-10"
+      >
+        <div
+          class="hidden logo sm:flex items-center bg-blue p-1.5 rounded w-52"
+        >
+          <h1 class="text-white text-lg font-medium">FongOverFlow</h1>
+          <img
+            src="../photos/logoWhite.png"
+            width="30"
+            height="30"
+            alt=""
+            class=""
+          />
+        </div>
+        <div class="search p-2 relative sm:w-1/2 flex w-full h-14 bg-white">
+          <div
+            class="icns-menu w-6 border border-grey flex justify-center px-4 items-center bg-blue rounded-tl-md rounded-bl-md sm:hidden"
+          >
+            <i class="fa-solid fa-bars text-white text-lg"></i>
+          </div>
+          <div
+            class="log-image bg-blue rounded-tr-md rounded-br-md w-6 flex justify-center sm:hidden"
+          >
+            <img
+              src="../photos/logoWhite.png"
+              alt=""
+              width="40"
+              height="40"
+              srcset=""
+            />
+          </div>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-4/5 px-10 pr-40 sm:pr-96 ml-5 sm:ml-10 border border-solid border-blue rounded outline-none py-1 placeholder:-mr-16 hover:shadow-lg hover:py-2"
+          />
+          <i
+            class="fa-solid fa-magnifying-glass text-blue font-medium absolute left-24 top-5 sm:top-5 sm:left-16"
+          ></i>
+        </div>
+        <div
+          class="connect hidden sm:flex items-center justify-between w-2/5 gap-10 pr-8"
+        >
+          <div class="history">
+            <h1 class="text-blue font-medium underline">History</h1>
+          </div>
+          <i
+            class="fa-solid fa-question text-white bg-blue rounded-full p-2 cursor-pointer"
+          ></i>
+          <button
+            class="logout cursor-pointer text-blue font-bold bg-grey w-1/2 rounded px-4 py-2 hover:bg-gray"
+          >
+            Log Out
+          </button>
+          <div
+            class="profil flex gap-2 border-blue border-solid bg-blue_f border w-52 rounded-3xl px-2 items-center"
+          >
+            <img
+              src="../photos/Amicus.jpg"
+              alt=""
+              width="50"
+              height="50"
+              class="rounded-full loger"
+            />
+            <p class="text-blue font-bold">Oscar</p>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <br />
+    <br />
+    <main class="flex w-full relative sm:justify-between">
+      <div
+        class="hidden sider-bar fixed overflow-y-scroll p-8 pb-20 border-r border-grey top-16 w-3/4 sm:w-1/5 border-solid h-screen sm:flex flex-col left-0"
+      >
+        <div class="sider-bar-connect">
+          <div class="user flex gap-2">
+            <img
+              src="../photos/me.jpg"
+              alt=""
+              width="30"
+              height="30"
+              class="rounded-full border border-grey"
+            />
+            <p class="user-name text-center text-white">@Tutyonick</p>
+            <i class="fa-solid fa-chevron-down text-white text-sm mt-2"></i>
+            <div
+              class="hidden log w-32 h-32 bg-grey rounded-md sm:flex flex-col items-center gap-5 absolute top-20 right-4"
+            >
+              <a href="" class="text-blue border-b border-blue pb-1">Profil</a>
+              <a href="" class="text-blue border-b border-blue pb-1">History</a>
+              <a href="" class="text-blue border-b border-blue pb-1">Logout</a>
+            </div>
+          </div>
+        </div>
+        <a
+          href="home.html"
+          class="transition-all py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-house px-3 text-white"></i>Home</a
+        >
+        <a
+          href=""
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-question px-3 text-white"></i>Questions</a
+        >
+        <a
+          href="#"
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-users px-3 text-white"></i>Members</a
+        >
+        <a
+          href="#"
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-regular fa-message px-3 text-white"></i>Messages</a
+        >
+        <a
+          href="#"
+          class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
+          ><i class="fa-solid fa-inbox px-3 text-white"></i>privite Contact</a
+        >
+        <br />
+        <h1 class="text-white font-medium ml-2">TAGS</h1>
+        <div class="py-4 px-2 flex flex-col gap-2">
+          <div class="flex gap-1">
+            <a
+              href=""
+              class="px-6 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >html</a
+            >
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >css</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Java</a
+            >
+            <a
+              href=""
+              class="px-8 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >JavaScript</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-2 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >php</a
+            >
+            <a
+              href=""
+              class="px-6 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Taiwindcss</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Boostrap</a
+            >
+            <a
+              href=""
+              class="px-2 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >nodeJs</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Jquery</a
+            >
+            <a
+              href=""
+              class="px-4 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
+              >Laravelphp</a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="container px-4 sm:w-full sm:ml-64 sm:pl-28 sm:flex sm:flex-col sm:justify-center"
+      >
+        <div
+          class="question-header w-full sm:w-11/12 h-auto flex flex-col mt-6 gap-4"
+        >
+          <a
+            href=""
+            class="bg-blue_f p-2 w-full sm:w-2/6 flex gap-4 items-center text-blue rounded-md"
+          >
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to all questions
+          </a>
+          <p class="title text-blue text-xl">
+            Error when installing tailwindcss in vs code
+          </p>
+          <div class="user flex gap-4 items-center">
+            <img
+              src="../photos/Amicus.jpg"
+              width="50"
+              height="50"
+              alt=""
+              class="rounded-full"
+            />
+            <p class="name text-blue">Dev.Charles Basilwango</p>
+            <p class="time-out">Posted 51 min ago</p>
+          </div>
+          <div
+            class="categories border border-grey rounded flex items-center w-full"
+          >
+            <a
+              href=""
+              class="px-4 py-2 text-blue border-r border-blue w-1/3 flex gap-4 items-center justify-center"
+              ><i class="fa-solid fa-book-open"></i>Details</a
+            >
+            <a
+              href=""
+              class="px-4 py-2 text-blue border-r border-blue w-1/3 flex gap-4 items-center justify-center"
+              ><i class="fa-solid fa-user-group"></i>Views</a
+            >
+            <a
+              href=""
+              class="px-4 py-2 text-blue w-1/3 flex gap-4 items-center justify-center"
+              ><i class="fa-solid fa-check-double"></i>Answers</a
+            >
+          </div>
+        </div>
+        <div
+          class="q-descriptions mt-4 w-full sm:w-11/12 bg-blue_f rounded-md p-5 flex flex-col gap-4"
+        >
+          <div class="relative">
+            <h1
+              class="text-blue border-white border-b pb-3 font-bold text-4xl w-full"
+            >
+              Problem decriptions
+            </h1>
+            <div class="add-answer absolute right-1 top-1 translate-x-6">
+              <p class="text-blue text-3xl rotate-90">...</p>
+            </div>
+            <div class="add-answer absolute right-5 top-3 hidden">
+              <a href="" class="text-white border border-blue p-1 rounded"
+                >Add Answer</a
+              >
+            </div>
+          </div>
+          <div class="details text-white py-2 text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+            dolorem vero repellendus nobis in deserunt ut! Libero sequi optio
+            repellat! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Aliquam dolorem vero repellendus nobis in deserunt ut! Libero sequi
+            optio repellat!
+          </div>
+          <h1 class="text-blue border-white border-b pb-3 font-bold text-4xl">
+            Code ullistrations
+          </h1>
+          <div class="ullistrations">
+            <img src="../photos/Capture d’écran (4).png" alt="" />
+          </div>
+          <h1 class="text-blue border-white border-b pb-3 font-bold text-4xl">
+            Technical Details
+          </h1>
+          <p class="text-blue">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex
+            doloremque sequi neque repellat earum reprehenderit eos magnam
+            beatae repellendus. Ad deleniti, sapiente eligendi eaque ipsa
+            praesentium quis repudiandae obcaecati odit. Tenetur, nihil?
+            Repellendus sapiente, iste quis aperiam esse praesentium ab.
+          </p>
+          <div class="relative">
+            <h1 class="text-blue border-white border-b pb-3 font-bold text-4xl">
+              Answers
+            </h1>
+            <div class="add-answer absolute right-1 top-1 translate-x-6">
+              <p class="text-blue text-3xl rotate-90">...</p>
+            </div>
+            <div class="add-answer absolute right-5 top-3">
+              <a
+                href=""
+                class="text-white border border-blue p-1 rounded hidden"
+                >Add Answer</a
+              >
+            </div>
+          </div>
+          <div class="answer flex flex-col border-b border-white pb-3 gap-2">
+            <div>
+              <p class="text-white">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. At,
+                laboriosam quia. Illum, rerum porro eum error ducimus
+                consectetur, nisi vel consequatur eligendi aut natus cum commodi
+                cupiditate quis cumque excepturi dolorem magni. Consectetur
+                optio quae minus recusandae molestias culpa ipsa!
+              </p>
+            </div>
+            <div class="user flex gap-4 items-center">
+              <img
+                src="../photos/Amicus.jpg"
+                width="50"
+                height="50"
+                alt=""
+                class="rounded-full"
+              />
+              <p class="name text-blue">Dev.Charles Basilwango</p>
+              <p class="time-out">51 min ago</p>
+              <p class="text-blue text-lg">
+                <i class="fa-solid fa-thumbs-up"></i> 15
+              </p>
+              <p class="text-lg"><i class="fa-solid fa-thumbs-down"></i> 3</p>
+            </div>
+            <div class="reactions flex justify-between">
+              <button class="bg-blue text-white px-4 py-2 w-2/6 rounded-md">
+                Userful <i class="fa-solid fa-check-double text-white"></i>
+              </button>
+              <div
+                class="input flex border border-white w-3/5 rounded-md items-center justify-between"
+              >
+                <input
+                  type="text"
+                  name="reply"
+                  id=""
+                  placeholder="Relpy"
+                  class="outline-none placeholder:text-blue placeholder:pl-4 text-blue pl-4 bg-blue_f w-full bg-opacity-0"
+                />
+                <i class="fa-solid fa-paper-plane text-blue text-2xl pr-4"></i>
+              </div>
+            </div>
+            <div class="reply">
+              <div class="user flex gap-4 items-center">
+                <img
+                  src="../photos/Amicus.jpg"
+                  width="50"
+                  height="50"
+                  alt=""
+                  class="rounded-full"
+                />
+                <p class="name text-blue">Dev.Charles Basilwango :</p>
+              </div>
+              <div class="text-white flex flex-col w-full">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Assumenda, sunt.
+                <div
+                  class="input flex border border-white w-full py-2 rounded-md items-center justify-between"
+                >
+                  <input
+                    type="text"
+                    name="reply"
+                    id=""
+                    placeholder="Relpy"
+                    class="outline-none placeholder:text-blue placeholder:pl-4 text-blue pl-4 bg-blue_f w-full opacity-0"
+                  />
+                  <i
+                    class="fa-solid fa-paper-plane text-blue text-2xl w-1/12"
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
