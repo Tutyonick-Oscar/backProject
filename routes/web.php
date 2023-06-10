@@ -25,4 +25,7 @@ Route::post('/ask',[viewsController::class,'send_question']);
 Route::post('/answer/{id}',[viewsController::class,'send_answer']);
 Route::post('/q-descriptions/{id}',[viewsController::class,'comments']);
 Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::get('/sign_up',[AuthController::class,'signUp'])->name('sign-up');
+Route::post('/sign_up',[AuthController::class,'signForm']);
+Route::post('/login',[AuthController::class,'loginForm']);
 
