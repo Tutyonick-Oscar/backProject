@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function profil () {
+        return view('Auth.profil');
+    }
     public function login () {
         return view('Auth.login');
     }
