@@ -76,7 +76,11 @@ class="container sm:ml-64 flexe flex-col sm:px-8 sm:py-4 font-light w-full p-2"
           width="30"
           height="30"
         />
+        @if ($question->user)
+        <p class="name text-blue">Dev.{{$question->user->name}}</p>
+        @else
         <p class="name text-blue">Dev.Charles Basilwango</p>
+        @endif
         <p class="date">17 days ago</p>
         <p class="view text-xs">
           <i class="fa-solid fa-user-group"></i> 15

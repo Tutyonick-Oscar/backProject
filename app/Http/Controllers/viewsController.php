@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\askQuestionRequest;
 use App\Models\answer;
 use App\Models\question;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Storage;
 use Symfony\Component\Console\Input\Input;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 
 class viewsController extends Controller
 {
@@ -38,6 +40,7 @@ class viewsController extends Controller
         if($request->validated('image')!==null && !$request->validated('image')->getError()){
             $question['image'] = $request->validated('image')->store('q-illustration','public');
         }
+        $question['user_id'] = Auth::user()->getAuthIdentifier();
         question::create($question);
         return to_route('questions');
     }

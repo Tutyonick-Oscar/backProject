@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\loginRequest;
-use Illuminate\Http\Request;
-use App\Http\Requests\sinUpRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Requests\loginRequest;
+use App\Http\Requests\sinUpRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,7 +23,8 @@ class AuthController extends Controller
     public function signForm (sinUpRequest $request) {
         $user = $request->validated();
         $user['password'] = Hash::make($request->validated('password')) ;
-        User::create($user);
+        $authUser = User::create($user);
+        Auth::login($authUser);
         return to_route('questions');
     }
     public function loginForm (loginRequest $request) {
