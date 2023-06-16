@@ -28,6 +28,7 @@ Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('/sign_up',[AuthController::class,'signUp'])->name('sign-up');
 Route::post('/sign_up',[AuthController::class,'signForm']);
 Route::post('/login',[AuthController::class,'loginForm']);
+Route::delete('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/profil',[AuthController::class,'profil'])->name('profil');
 
 

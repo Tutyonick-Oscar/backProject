@@ -87,23 +87,44 @@
           <i
             class="fa-solid fa-question text-white bg-blue rounded-full p-2 cursor-pointer"
           ></i>
-          <button
-            class="logout cursor-pointer text-blue font-bold bg-grey w-1/2 rounded px-4 py-2 hover:bg-gray"
-          >
-            Log Out
-          </button>
-          <div
-            class="profil flex gap-2 border-blue border-solid bg-blue_f border w-52 rounded-3xl px-2 items-center"
-          >
-            <img
-              src="../photos/Amicus.jpg"
-              alt=""
-              width="50"
-              height="50"
-              class="rounded-full loger"
-            />
-            <p class="text-blue font-bold">Oscar</p>
-          </div>
+         @auth
+              <form action="{{route('logout')}}" method="post" class="w-1/2 ">
+                @method('delete')
+                @csrf
+                <button
+                class="logout cursor-pointer text-blue font-bold bg-grey w-full rounded px-4 py-2 hover:bg-gray"
+                >
+                  Log Out
+                </button>
+              </form>
+              <div
+                  class="profil flex gap-2 border-blue border-solid bg-blue_f border w-52 rounded-3xl px-2 items-center"
+                 >
+                   <img
+                    src="../photos/Amicus.jpg"
+                    alt=""
+                    width="40"
+                    height="40"
+                    class="rounded-full loger"
+                  />
+                  <p class="text-blue font-bold">{{Auth::user()->name}}</p>
+            </div>
+         @endauth
+         @guest
+                <a class="cursor-pointer text-blue font-bold bg-grey w-full rounded px-4 py-2 hover:bg-gray" href="{{route('login')}}">Login...</a>
+                <div
+                class="profil flex gap-2 border-blue border-solid bg-blue_f border w-52 rounded-3xl px-2 items-center"
+               >
+                 <img
+                  src="../photos/Amicus.jpg"
+                  alt=""
+                  width="40"
+                  height="40"
+                  class="rounded-full loger"
+                />
+                <p class="text-blue font-bold">unkwon</p>
+            </div>
+         @endguest
         </div>
       </nav>
     </header>
@@ -115,14 +136,17 @@
       >
         <div class="sider-bar-connect">
           <div class="user flex gap-2">
-            <img
-              src="../photos/me.jpg"
-              alt=""
-              width="30"
-              height="30"
-              class="rounded-full border border-grey"
-            />
-            <p class="user-name text-center text-white">@Tutyonick</p>
+            @auth
+                <img
+                src="../photos/me.jpg"
+                alt=""
+                width="30"
+                height="30"
+                class="rounded-full border border-grey"
+              />
+              <p class="user-name text-center text-white">{{Auth::user()->name}}</p>
+            @endauth
+
             <i class="fa-solid fa-chevron-down text-white text-sm mt-2"></i>
             <div
               class="hidden log w-32 h-32 bg-grey rounded-md sm:flex flex-col items-center gap-5 absolute top-20 right-4"

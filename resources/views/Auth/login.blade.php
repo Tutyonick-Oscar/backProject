@@ -54,19 +54,26 @@
           <img src="../photos/logoWhite.png" alt="" width="50" height="60" />
           <p class="text-white text-xl">FongOverFlow</p>
         </div>
-        <form action="" class="w-full px-5 py-2 flex flex-col gap-3 sm:gap-6 sm:shadow-lg">
+        <form action="" method="post" class="w-full px-5 py-2 flex flex-col gap-3 sm:gap-6 sm:shadow-lg">
+          @csrf
           <h3 class="text-white text-2xl sm:text-blue">Login</h3>
           <p class="text-grey font-medium">
             welcome back Please login to your account
           </p>
-          <label for="user-name" class="text-white text-lg sm:text-blue">User-name</label>
-          <input
-            type="text"
-            name="user-name"
-            id="user-name"
-            class="outline-none bg-blue border border-grey py-2 rounded-md px-5 text-white
-             focus:border-2 focus:shadow-sm sm:text-blue sm:bg-white"
-          />
+          <div class="flex flex-col">
+            <label for="user-name" class="text-white text-lg sm:text-blue">User-name</label>
+            <input
+              type="text"
+              name="name"
+              id="user-name"
+              class="outline-none bg-blue border border-grey py-2 rounded-md px-5 text-white
+               focus:border-2 focus:shadow-sm sm:text-blue sm:bg-white"
+            />
+            @error('name')
+                {{$message}}
+            @enderror
+          </div>
+       <div class="flex flex-col">
           <label for="password" class="text-white text-lg sm:text-blue">Password</label>
           <input
             type="password"
@@ -75,6 +82,10 @@
             class="outline-none bg-blue border border-grey py-2 rounded-md px-5 text-white 
             focus:border-2 focus:shadow-sm sm:text-blue sm:bg-white"
           />
+          @error('password')
+              {{$message}}
+          @enderror
+       </div> 
           <div class="flex justify-between">
             <div class="flex gap-2 items-center">
               <input type="checkbox" name="remember" id="remember" />
@@ -89,7 +100,7 @@
             Login
           </button>
           <p class="text-grey">
-            New User ? <a href="#" class="text-white sm:text-blue">Sign Up</a>
+            New User ? <a href="{{route('sign-up')}}" class="text-white sm:text-blue">Sign Up</a>
           </p>
         </form>
       </div>
