@@ -5,7 +5,23 @@
     <div class="sm:w-full sm:bg-blue sm:h-14">
       <div class="w-full h-32 items-center flex justify-between bg-blue px-4">
         .
-        <i class="fa fa-camera -mt-16 text-lg"></i>
+        <div>
+          <form action="" method="post" enctype="multipart/form-data" >
+            @csrf
+            <div>
+              <label for="picture"><i class="fa fa-camera -mt-16 text-lg text-white cursor-pointer"></i></label>
+              <input type="file" name="image" id="picture" class="hidden">
+              @error('image')
+                  {{$message}}
+              @enderror
+            </div>     
+            <div class="hidden">
+              <input type="text" name="text" value="profil photo">
+            </div>
+            <button type="submit" class="cursor-pointer text-white px-4 rounded border border-grey">send</button>
+          </form> 
+        </div>
+     
       </div>
     </div>
     <div class="sm:flex">
@@ -21,8 +37,10 @@
             </div>
             </div>
             <div class="w-full px-4 sm:-mt-32">
-              <p class="text-blue">Homere Baraka</p>
-              <p class="text-grey text-sm">@homere</p>
+              <p class="text-blue">{{Auth::user()->name}}</p>
+              <p class="text-grey text-sm">
+                {{Auth::user()->name}}
+              </p>
             </div>
             <div class="flex flex-col gap-2 sm:mt-20">
               <div class="flex gap-3 my-2">
@@ -48,7 +66,7 @@
             </button>
           </div>
           <div class="flex justify-between px-4">
-            <input type="file" name="" id="" class=" text-blue rounded">
+            {{-- <input type="file" name="" id="" class=" text-blue rounded"> --}}
             <i class="fa-regular fa-star text-blue hover:bg-blue hover:text-white items-center rounded-full">
               <div class="flex flex-col gap-2 bg-blue p-2 rounded absolute right-5 hidden">
                 <a href="" class="text-white text-left text-xs"><i class="fa-regular fa-star"></i> Edit</a>

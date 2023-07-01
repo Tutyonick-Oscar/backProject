@@ -30,5 +30,7 @@ Route::post('/sign_up',[AuthController::class,'signForm']);
 Route::post('/login',[AuthController::class,'loginForm']);
 Route::delete('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/profil',[AuthController::class,'profil'])->name('profil')->middleware('auth');
+Route::post('/profil',[AuthController::class,'sendProfil']);
+
 
 

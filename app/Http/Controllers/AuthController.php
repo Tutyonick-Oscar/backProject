@@ -8,6 +8,7 @@ use App\Http\Requests\loginRequest;
 use App\Http\Requests\sinUpRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Validator;
 
 class AuthController extends Controller
 {
@@ -41,5 +42,23 @@ class AuthController extends Controller
     public function logout () {
         Auth::logout();
         return to_route('login');
+    }
+    public function sendProfil (Request $request) {
+        $user_id = Auth::user()->getAuthIdentifier();
+        $user = User::find($user_id); 
+        $valid = Validator::make([
+            'image'=>$request->input('image'),
+            'text'=>$request->input('text')
+        ],[
+            'image' => '',
+            'text' => 'required'
+        ]);
+        dd($valid->validated());
+        // if ($request->validated('image')!== null && !$request->validated('image')->getError()){
+        //     $valid->validated()['image'] = $request->validated('image')->store('profil','public');
+        // }
+        $user->photo()->create($valid);
+       
+        return to_route('profil');
     }
 }
