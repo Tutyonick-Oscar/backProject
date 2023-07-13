@@ -70,7 +70,13 @@ class="container sm:ml-64 flexe flex-col sm:px-8 sm:py-4 font-light w-full p-2"
       </p>
       <div class="flex mt-2 gap-2 items-center">
         <img
-          src="../photos/kstion.png"
+        @if ($question->user)
+            @if ($question->user->photo)
+                src="/storage/{{$question->user->photo->photo}}"
+            @endif       
+        @else
+            src = "../kstion.png"
+        @endif     
           alt=""
           class="rounded-full border border-grey"
           width="30"

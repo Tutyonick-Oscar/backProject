@@ -6,18 +6,15 @@
       <div class="w-full h-32 items-center flex justify-between bg-blue px-4">
         .
         <div>
-          <form action="" method="post" enctype="multipart/form-data" >
+          <form action="" enctype="multipart/form-data" method="post">
             @csrf
             <div>
-              <label for="picture"><i class="fa fa-camera -mt-16 text-lg text-white cursor-pointer"></i></label>
-              <input type="file" name="image" id="picture" class="hidden">
-              @error('image')
+              <label for="photo"><i class="fa fa-camera -mt-16 text-lg text-white cursor-pointer"></i></label>
+              <input type="file" name="photo" id="photo" class="hidden">
+              @error('photo')
                   {{$message}}
               @enderror
             </div>     
-            <div class="hidden">
-              <input type="text" name="text" value="profil photo">
-            </div>
             <button type="submit" class="cursor-pointer text-white px-4 rounded border border-grey">send</button>
           </form> 
         </div>
@@ -30,7 +27,11 @@
         <div class="flex flex-col gap-1 sm:flex-col">
           <div class="flex justify-between my-4 px-4 flex-col">
             <div class="flex justify-between my-2 px-2 sm:flex-col">
-              <img src="../photos/avat.png" class="w-32 rounded-full -mt-16">
+              <img @if (Auth::user()->photo)
+              src="{{$profil}}"
+              @else
+              src =""
+              @endif  class="w-32 rounded-full profile -mt-16">
             <div class="flex gap-1 items-center sm:mt-16">
               <a href="" class="bg-blue items-center px-4 rounded text-grey py-2 sm:px-3 sm:w-52"><i class="fa fa-link"></i> Copy profil link</a>
               <a href="" class="bg-blue items-center px-3 text-grey py-2 rounded  sm:w-1/2"><i class="fa fa-pencil"></i> Edit</a>

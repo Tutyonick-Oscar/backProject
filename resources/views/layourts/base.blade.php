@@ -21,17 +21,13 @@
         margin: 0;
         box-sizing: border-box;
       }
-      .container .asked {
-        width: 100%;
-      }
       .sider-bar {
         height: 100vh;
         /* width: 20%; */
         background: linear-gradient(#2c3e50f9, #2d3a3a, #2c3e50);
       }
-      .who-ask,
-      .loger {
-        border-radius: 100%;
+      .profile {
+        border-radius: 50%;
       }
     </style>
   </head>
@@ -100,12 +96,15 @@
               <div
                   class="profil flex gap-2 border-blue border-solid bg-blue_f border w-52 rounded-3xl px-2 items-center"
                  >
-                   <img
-                    src="../photos/Amicus.jpg"
+                   <img @if (Auth::user()->photo)
+                       src="{{$profil}}"
+                       @else 
+                       src =""
+                   @endif
                     alt=""
                     width="40"
                     height="40"
-                    class="rounded-full loger"
+                    class=" profile"
                   />
                   <p class="text-blue font-bold">{{Auth::user()->name}}</p>
             </div>

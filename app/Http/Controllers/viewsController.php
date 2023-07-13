@@ -17,6 +17,7 @@ class viewsController extends Controller
     public function questions () {
         return view('index',[
             'questions'=>question::all(),
+            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo),
         ]);
     }
     public function ask () {

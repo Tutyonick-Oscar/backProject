@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\profilRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\loginRequest;
 use App\Http\Requests\sinUpRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Storage;
 use Validator;
 
 class AuthController extends Controller
 {
     public function profil () {
-        return view('Auth.profil');
+        return view('Auth.profil',[
+            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo)
+        ]);
     }
     public function login () {
         return view('Auth.login');
@@ -43,21 +47,14 @@ class AuthController extends Controller
         Auth::logout();
         return to_route('login');
     }
-    public function sendProfil (Request $request) {
+    public function sendProfil (profilRequest $request) {
         $user_id = Auth::user()->getAuthIdentifier();
         $user = User::find($user_id); 
-        $valid = Validator::make([
-            'image'=>$request->input('image'),
-            'text'=>$request->input('text')
-        ],[
-            'image' => '',
-            'text' => 'required'
-        ]);
-        dd($valid->validated());
-        // if ($request->validated('image')!== null && !$request->validated('image')->getError()){
-        //     $valid->validated()['image'] = $request->validated('image')->store('profil','public');
-        // }
-        $user->photo()->create($valid);
+        $photo = $request->validated();
+        if ($request->validated('photo')!== null && !$request->validated('photo')->getError()){
+            $photo['photo'] = $request->validated('photo')->store('profil','public');
+        }
+        $user->photo()->create($photo);
        
         return to_route('profil');
     }
