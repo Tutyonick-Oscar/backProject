@@ -67,4 +67,10 @@ class viewsController extends Controller
         $answer->comments()->create($valid->validated());
         return to_route('questions');
     }
+    public function members () {
+        return view('members',[
+            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo),
+            'users'=>User::all()
+        ]);
+    }
 }
