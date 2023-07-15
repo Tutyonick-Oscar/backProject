@@ -157,17 +157,17 @@
           </div>
         </div>
         <a
-          href="home.html"
+          href="{{route('questions')}}"
           class="transition-all py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
           ><i class="fa-solid fa-house px-3 text-white"></i>Home</a
         >
         <a
-          href=""
+          href="{{route('questions')}}"
           class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
           ><i class="fa-solid fa-question px-3 text-white"></i>Questions</a
         >
         <a
-          href="#"
+          href="{{route('members')}}"
           class="py-4 hover:bg-gray hover:text-white rounded-sm focus:border-r-2 border-grey border-solid font-medium text-grey"
           ><i class="fa-solid fa-users px-3 text-white"></i>Members</a
         >
@@ -210,7 +210,7 @@
           </div>
           <div class="flex gap-2">
             <a
-              href=""
+              href="{{route('tags_php')}}"
               class="px-2 py-2 border border-grey rounded text-grey hover:bg-gray hover:text-white"
               >php</a
             >

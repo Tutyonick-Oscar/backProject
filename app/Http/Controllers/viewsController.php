@@ -73,4 +73,10 @@ class viewsController extends Controller
             'users'=>User::all()
         ]);
     }
+    public function tags_php() {
+        return view('tags.php',[
+            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo),
+            'questions' => question::where('tags','=','php')->get(),
+        ]);
+    }
 }

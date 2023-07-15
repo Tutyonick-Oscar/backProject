@@ -37,7 +37,7 @@
           <p class="text-blue text-sm mt-2">
             Learner at fongolaboratory club <br />
             1 year of code experience <br />
-            join the club on 12 feb 2023
+            join the club on {{$user->updated_at->format('d M Y')}}
           </p>
         </div>
         <div class="flex items-center justify-between">
@@ -56,7 +56,6 @@
         </div>
       </div>
       @endforeach
-
     </div>
   </div>
 @endsection
