@@ -3,7 +3,7 @@
 @section('container')
 <div class="container w-full mt-6 sm:w-4/5 sm:ml-64 sm:flex">
   <div class="flex flex-col pl-2 pr-5 gap-4 sm:ml-6 sm:w-full">
-      <a href="" class=" px-2 text-blue border border-grey rounded-md text-lg w-32">all categories</a>
+      <a href="{{route('questions')}}" class=" px-2 text-blue border border-grey rounded-md text-lg w-32">all categories</a>
       <div class="header flex justify-between items-center border-t border-grey">
       <p class="text-blue">Questions</p>
       <div class="flex gap-1 items-center sm:gap-3 ">
@@ -18,7 +18,7 @@
         <div class="kstion flex flex-col">
         <p class="text-grey">{{$question->title}} <br>
        {{$question->descriptions}}.</p> 
-        <a href="" class="text-blue text-sm">view more</a>
+        <a href="{{route('descriptions',$question->id)}}" class="text-blue text-sm">view more</a>
         </div>
         <div class="flex">
         <a href="">
@@ -36,7 +36,9 @@
         <p class="nombre text-blue mt-2 sm:hidden">123</p>
         <p class=" text-blue mt-2 sm:hidden">18h</p>
         <div class="hidden sm:flex sm:gap-8 sm:items-center">
-          <p class="nombre text-blue ">123</p>
+          <p class="replies text-blue ">
+            {{$question->answers_count}}
+          </p>
           <p class="views text-blue">212 v</p>
           <p class=" text-blue ">18h</p>
         </div>    

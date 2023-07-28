@@ -18,7 +18,6 @@ body {
   width: 100%;
   height: 95vh;
   display: flex;
-  animation: test 3s ease-out 2s 1;
 }
 .container .avatar {
   width: 50%;
@@ -41,9 +40,6 @@ body {
 }
 .container .avatar .logo h3 {
   color: rgba(252, 255, 252, 0.7411764706);
-}
-.container .avatar .img {
-  animation: test2 0.5s ease-in-out 5s 1;
 }
 .container .form {
   width: 50%;
@@ -120,22 +116,6 @@ body {
   transform: scale(1.1);
 }
 
-@keyframes test {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(180deg);
-  }
-}
-@keyframes test2 {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(50%);
-  }
-}
 .accounts {
   display: flex;
   gap: 20px;

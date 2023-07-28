@@ -1,6 +1,7 @@
 @extends('layourts.base')
 @section('title','Questions')
 @section('container')
+{{-- @dd($carbon::parse($questions->first()->created_at)->diffInYears($carbon::now())) --}}
 <div
 class="container sm:ml-64 flexe flex-col sm:px-8 sm:py-4 font-light w-full p-2"
 >
@@ -64,9 +65,16 @@ class="container sm:ml-64 flexe flex-col sm:px-8 sm:py-4 font-light w-full p-2"
       <p class="title text-white text-start text-lg capitalize">
        {{$question->title}}
       </p>
-      <p class="litle-descript text-blue">
-        {{$question->descriptions}}
-        <a href="{{route('descriptions',$question->id)}}" class="text-white">more...</a>
+      <p class="litle-descript text-blue flex">
+        <p class="text-blue text-sm">{{$question->descriptions}}</p>
+        <form action="{{route('views',$question->id)}}" method="post">
+          @csrf
+          <input type="hidden" name="view" value="question viewed">
+            <button type="submit"class="text-blue" >
+              more...
+            </button>
+          </a>
+        </form>
       </p>
       <div class="flex mt-2 gap-2 items-center">
         <img
@@ -87,9 +95,38 @@ class="container sm:ml-64 flexe flex-col sm:px-8 sm:py-4 font-light w-full p-2"
         @else
         <p class="name text-blue">Dev.Charles Basilwango</p>
         @endif
-        <p class="date">17 days ago</p>
+        @if ($carbon::parse($question->created_at)->diffInSeconds($carbon::now())>0 && 
+          $carbon::parse($question->created_at)->diffInSeconds($carbon::now())<60)
+          <p class="date">
+              {{$carbon::parse($question->created_at)->diffInSeconds($carbon::now())}} sec ago
+          </p>    
+          @elseif( $carbon::parse($question->created_at)->diffInSeconds($carbon::now())>59 && 
+          $carbon::parse($question->created_at)->diffInMinutes($carbon::now())<60)
+            <p class="date">
+                {{$carbon::parse($question->created_at)->diffInMinutes($carbon::now())}} Min ago
+            </p
+          @elseif($carbon::parse($question->created_at)->diffInMinutes($carbon::now())>59 && 
+          $carbon::parse($question->created_at)->diffInHours($carbon::now())<24)
+            <p class="date">
+              {{$carbon::parse($question->created_at)->diffInHours($carbon::now())}} Hours ago
+            </p
+            @elseif($carbon::parse($question->created_at)->diffInHours($carbon::now())>23 && 
+            $carbon::parse($question->created_at)->diffInDays($carbon::now())<32)
+              <p class="date">
+                {{$carbon::parse($question->created_at)->diffInDays($carbon::now())}} Days ago
+              </p
+            @elseif($carbon::parse($question->created_at)->diffInDays($carbon::now())>32 &&
+            $carbon::parse($question->created_at)->diffInMonths($carbon::now())<12) 
+              <p class="date">
+                {{$carbon::parse($question->created_at)->diffInMonths($carbon::now())}} Months ago
+              </p
+            @else
+              <p class="date">
+                {{$carbon::parse($question->created_at)->diffInYears($carbon::now())}} Years ago
+              </p
+         @endif
         <p class="view text-xs">
-          <i class="fa-solid fa-user-group"></i> 15
+          <i class="fa-solid fa-user-group"></i> {{$question->views_count}}
         </p>
       </div>
       <div class="descrpt-link mt-2 w-full">

@@ -22,7 +22,8 @@ Route::get('/answer/{id}',[viewsController::class,'answer'])->name('answer');
 Route::get('/ask',[viewsController::class,'ask'])->name('ask-question')->middleware('auth');
 Route::get('/q-descriptions/{id}',[viewsController::class,'descriptions'])->name('descriptions')->middleware('auth');
 Route::post('/ask',[viewsController::class,'send_question']);
-Route::post('/answer/{id}',[viewsController::class,'send_answer']);
+Route::post('views/{id}',[viewsController::class,'send_view'])->name('views');
+Route::post('/answer/{id}',[viewsController::class,'send_answer'])->middleware('auth');
 Route::post('/q-descriptions/{id}',[viewsController::class,'comments'])->middleware('auth');
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('/sign_up',[AuthController::class,'signUp'])->name('sign-up');
@@ -33,6 +34,7 @@ Route::get('/profil',[AuthController::class,'profil'])->name('profil')->middlewa
 Route::post('/profil',[AuthController::class,'sendProfil']);
 Route::get('/members',[viewsController::class,'members'])->name('members')->middleware('auth');
 Route::get('/tags/php',[viewsController::class,'tags_php'])->name('tags_php')->middleware('auth');
+
 
 
 

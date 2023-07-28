@@ -97,10 +97,11 @@
                   class="profil flex gap-2 border-blue border-solid bg-blue_f border w-52 rounded-3xl px-2 items-center"
                  >
                    <img @if (Auth::user()->photo)
-                       src="{{$profil}}"
+                       src="/storage/{{Auth::user()->photo->photo}}"
                        @else 
                        src =""
                    @endif
+                   src =" "
                     alt=""
                     width="40"
                     height="40"

@@ -2,24 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\askQuestionRequest;
+use Storage;
+use Validator;
+use App\Models\User;
 use App\Models\answer;
 use App\Models\question;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Storage;
-use Symfony\Component\Console\Input\Input;
-use Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\askQuestionRequest;
+use Illuminate\Database\Eloquent\Builder;
+use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Carbon;
 
 class viewsController extends Controller
 {
     public function questions () {
         return view('index',[
-            'questions'=>question::all(),
-            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo),
+            'questions'=>question::withCount('views')->get(),
+            'carbon' => Carbon::class, 
+            'secondes'=> Carbon::parse(question::first()->created_at->format('d-n-Y-i-s'))->diffInSeconds(Carbon::now()),
+
+        
+            
         ]);
     }
+    
     public function ask () {
         return view('ask');
     }
@@ -33,7 +40,7 @@ class viewsController extends Controller
     public function answer ($id) {
         return view('answer',[
             'question'=>question::findOrFail($id),
-            'urlImage'=>Storage::url(question::findOrFail($id)->image)
+            'urlImage'=>Storage::url(question::findOrFail($id)->image),
         ]);
     }
     public function send_question (askQuestionRequest $request) {
@@ -63,20 +70,26 @@ class viewsController extends Controller
         ]);
         $question = question::find($id);
         $answer = answer::find($id);
-        dd($answer);
         $answer->comments()->create($valid->validated());
         return to_route('questions');
     }
     public function members () {
         return view('members',[
-            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo),
             'users'=>User::all()
         ]);
     }
     public function tags_php() {
         return view('tags.php',[
-            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo),
-            'questions' => question::where('tags','=','php')->get(),
+            'questions' => question::where('tags','=','php')->withCount('answers')->get(),          
         ]);
+    }
+    public function send_view (Request $request,$id) {
+        $question = question::find($id);
+        $validation = Validator::make(
+            ['view' => $request->input('view')],
+            ['view'=>['required'] ]
+        );
+        $view = $question->views()->create($validation->validated());
+        return to_route('descriptions',$question->id);
     }
 }

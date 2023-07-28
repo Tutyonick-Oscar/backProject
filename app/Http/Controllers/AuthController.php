@@ -15,9 +15,7 @@ use Validator;
 class AuthController extends Controller
 {
     public function profil () {
-        return view('Auth.profil',[
-            'profil' =>Storage::url(User::findOrFail(Auth::user()->getAuthIdentifier())->photo->photo)
-        ]);
+        return view('Auth.profil');
     }
     public function login () {
         return view('Auth.login');
