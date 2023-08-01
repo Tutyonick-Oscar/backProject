@@ -8,7 +8,8 @@
       <div class="sm:w-80 w-full border border-grey h-48 bg-grey rounded-md px-4 py-2">
         <div class="flex justify-between items-center">
           <div class="rounded-full border border-blue p-1">
-            <img
+            <a href="{{route('profil',$user->name)}}">
+              <img
               @if ($user->photo)
               src="/storage/{{$user->photo->photo}}"
               @endif
@@ -18,6 +19,7 @@
               height="30"
               class="rounded-full"
             />
+            </a>
           </div>
           <p class="text-blue border border-blue_f px-2 rounded-md">
             BackEnd Developer

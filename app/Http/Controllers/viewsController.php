@@ -19,14 +19,9 @@ class viewsController extends Controller
     public function questions () {
         return view('index',[
             'questions'=>question::withCount('views')->get(),
-            'carbon' => Carbon::class, 
-            'secondes'=> Carbon::parse(question::first()->created_at->format('d-n-Y-i-s'))->diffInSeconds(Carbon::now()),
-
-        
-            
+            'carbon' => Carbon::class,    
         ]);
-    }
-    
+    }  
     public function ask () {
         return view('ask');
     }

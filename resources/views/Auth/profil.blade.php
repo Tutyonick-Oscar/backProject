@@ -6,17 +6,19 @@
       <div class="w-full h-32 items-center flex justify-between bg-blue px-4">
         .
         <div>
-          <form action="" enctype="multipart/form-data" method="post">
-            @csrf
-            <div>
-              <label for="photo"><i class="fa fa-camera -mt-16 text-lg text-white cursor-pointer"></i></label>
-              <input type="file" name="photo" id="photo" class="hidden">
-              @error('photo')
-                  {{$message}}
-              @enderror
-            </div>     
-            <button type="submit" class="cursor-pointer text-white px-4 rounded border border-grey">send</button>
-          </form> 
+            @if ($userInfos->name == Auth::user()->name)
+            <form action="" enctype="multipart/form-data" method="post">
+              @csrf
+              <div>
+                <label for="photo"><i class="fa fa-camera -mt-16 text-lg text-white cursor-pointer"></i></label>
+                <input type="file" name="photo" id="photo" class="hidden">
+                @error('photo')
+                    {{$message}}
+                @enderror
+              </div>     
+              <button type="submit" class="cursor-pointer text-white px-4 rounded border border-grey">send</button>
+            </form>
+            @endif
         </div>
      
       </div>
@@ -27,28 +29,32 @@
         <div class="flex flex-col gap-1 sm:flex-col">
           <div class="flex justify-between my-4 px-4 flex-col">
             <div class="flex justify-between my-2 px-2 sm:flex-col">
-              <img @if (Auth::user()->photo)
-              src="{{$profil}}"
+               @if ($userInfos->photo)
+                <img
+                src="/storage/{{$userInfos->photo->photo}}"
+                class="w-32 rounded-full profile -mt-16">
               @else
-              src =""
-              @endif  class="w-32 rounded-full profile -mt-16">
+                <div class="w-32 h-32 rounded-full bg-gray -mt-16 flex justify-center items-center text-blue text-4xl">
+                    {{$str::upper($str::substr($userInfos->name,0,1))}}
+                </div>
+              @endif  
+              
             <div class="flex gap-1 items-center sm:mt-16">
               <a href="" class="bg-blue items-center px-4 rounded text-grey py-2 sm:px-3 sm:w-52"><i class="fa fa-link"></i> Copy profil link</a>
-              <a href="" class="bg-blue items-center px-3 text-grey py-2 rounded  sm:w-1/2"><i class="fa fa-pencil"></i> Edit</a>
+              @if ($userInfos->name == Auth::user()->name)
+              <a href="{{route('devInformations',Auth::user()->name)}}" class="bg-blue items-center px-3 text-grey py-2 rounded  sm:w-1/2"><i class="fa fa-pencil"></i> Edit</a>
+              @endif
             </div>
             </div>
-            <div class="w-full px-4 sm:-mt-32">
-              <p class="text-blue">{{Auth::user()->name}}</p>
-              <p class="text-grey text-sm">
-                {{Auth::user()->name}}
-              </p>
+            <div class="w-full px-4 sm:-mt-24 sm:-ml-2">
+              <p class="text-blue text-2xl font-extrabold">Dev. {{$userInfos->name}}</p>
             </div>
             <div class="flex flex-col gap-2 sm:mt-20">
-              <div class="flex gap-3 my-2">
+              <div class="flex gap-3 my-2 sm:px-2">
                 <p class="text-blue">0 followers</p>
                 <p class="text-blue">0 following</p>
               </div>
-              <p class="text-grey bg-blue w-14 p-1 rounded">Online</p>
+              <p class="text-grey bg-blue w-14 p-1 sm:px-2 rounded ml-2">Online</p>
             </div>
           </div>
         </div>

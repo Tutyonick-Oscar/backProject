@@ -45,4 +45,10 @@ class User extends Authenticatable
     public function photo () {
         return $this->hasOne(Photo::class);
     }
+    
+    public function user ($users,$user_name) {
+        foreach ($users as $user) {
+         return $user->name == $user_name;
+        }
+     }
 }

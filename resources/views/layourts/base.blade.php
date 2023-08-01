@@ -107,7 +107,8 @@
                     height="40"
                     class=" profile"
                   />
-                  <p class="text-blue font-bold">{{Auth::user()->name}}</p>
+                  <p class="text-blue font-bold"><a href="{{route('profil',Auth::user()->name)}}">
+                    {{Auth::user()->name}}</a></p>
             </div>
          @endauth
          @guest
