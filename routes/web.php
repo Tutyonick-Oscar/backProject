@@ -31,8 +31,9 @@ Route::post('/sign_up',[AuthController::class,'signForm']);
 Route::post('/login',[AuthController::class,'loginForm']);
 Route::delete('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/profil/{userName}',[AuthController::class,'profil'])->name('profil')->middleware('auth');
-Route::get('/devinfos/{userName}',[AuthController::class,'infos'])->name('devInformations')->middleware('auth');
 Route::post('/profil/{userName}',[AuthController::class,'sendProfil']);
+Route::get('/devinfos/{userName}',[AuthController::class,'infos'])->name('devInformations')->middleware('auth');
+Route::post('/devinfos/{userName}',[AuthController::class,'sendInfos']);
 Route::get('/members',[viewsController::class,'members'])->name('members')->middleware('auth');
 Route::get('/tags/php',[viewsController::class,'tags_php'])->name('tags_php')->middleware('auth');
 

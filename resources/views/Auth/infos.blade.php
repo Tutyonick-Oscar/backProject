@@ -12,49 +12,70 @@
           </h1>
           <form
             action=""
-            class="flex flex-col px-10 gap-4 mt-4 text-sm sm:text-base text-blue"
+            class="flex flex-col px-10 gap-4 mt-4 text-sm sm:text-base text-blue " method="post"
           >
+          @csrf
             <label for="experience"
               >How many years of experience do you have</label
             >
-            <input
-            name="experience"
-              type="number"
-              id="experience"
-              class="border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey"
-            />
+            <div class="">
+              <input
+              name="experience"
+                type="number"
+                id="experience"
+                class="border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey w-full"
+              />
+              @error('experience')
+                  {{$message}}
+              @enderror
+            </div>
             <label for="post">What function do you have at fongolab club</label>
-            <select
+             <div>
+              <select
               name="post"
               id="post"
-              class="border border-grey text-blue py-2 rounded-sm pl-10"
+              class="border border-grey text-blue py-2 rounded-sm pl-10 w-full"
             >
-              <option value="" class="text-blue bg-white">Learner</option>
-              <option value="">Cordinator</option>
-              <option value="">Teacher</option>
-              <option value="">Master</option>
-              <option value="">Superviser</option>
+              <option value="Learner" class="text-blue bg-white">Learner</option>
+              <option value="Cordinator">Cordinator</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Master">Master</option>
+              <option value="Superviser">Superviser</option>
             </select>
+            @error('post')
+                {{$message}}
+            @enderror
+             </div>
             <label for="kind"> What kind of developer you are !</label>
-            <select
+             <div>
+              <select
               name="kind"
               id="kind"
-              class="border border-grey text-blue py-2 rounded-sm pl-10"
+              class="border border-grey text-blue py-2 rounded-sm pl-10 w-full"
             >
-              <option value="" class="text-blue bg-white">Front-End</option>
-              <option value="">Back-End</option>
-              <option value="">FullStack</option>
+              <option value="Front-End" class="text-blue bg-white">Front-End</option>
+              <option value="Back-End">Back-End</option>
+              <option value="FullStack">FullStack</option>
             </select>
+            @error('kind')
+                {{$message}}
+            @enderror
+             </div>
             <label for="bio">Bio</label>
-            <textarea
+            <div>
+              <textarea
               name="bio"
               id="bio"
               cols="30"
               rows="2"
-              class="border border-grey rounded-sm text-blue focus:border-grey focus:border-2 p-4"
-            ></textarea>
+              class="border border-grey rounded-sm text-blue focus:border-grey focus:border-2 p-4 w-full"
+              ></textarea>
+              @error('bio')
+                  {{$message}}
+              @enderror
+            </div>
             <div
-              class=" justify-center items-center relative after:w-2/6 before:w-1/5 sm:after:w-1/2 after:h-1 after:bg-blue after:content-['']
+              class=" justify-center items-center relative after:w-1/2 before:w-16 sm:after:w-1/2 after:h-1 after:bg-blue after:content-['']
                after:block w-full after:absolute after:top-2 sm:after:top-3 after:right-1
                sm:before:w-1/4  before:h-1 before:bg-blue before:content-['']
                before:block  before:absolute before:top-2 sm:before:top-3 before:left-1"
@@ -62,14 +83,33 @@
               <p class="sm:ml-48 ml-16 pl-2 sm:pl-0">Social media links</p>
             </div>
             <label for="twitter">twitter</label>
-            <input type="text" id="twitter" name="twitter" class="border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
+            <div>
+              <input type="text" id="twitter" name="twitter" class="w-full border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
+              @error('twitter')
+                  {{$message}}
+              @enderror
+            </div>
             <label for="linkedIn">LinkedIn</label>
-            <input type="text" id="twitter" name="linkedIn" class="border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
+            <div>
+              <input type="text" id="linkedIn" name="linkedin" class="w-full border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
+              @error('linkedin')
+                  {{$message}}
+              @enderror
+            </div>
             <label for="github">Github</label>
-            <input type="text" id="github" name="github" class="border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
+            <div>
+              <input type="text" id="github" name="github" class="w-full border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
+              @error('github')
+                 <p class="text-blue_f"> {{$message}}</p>
+              @enderror
+            </div>
             <label for="portfolio">Portfolio</label>
-            <input type="text" id="portfolio" name="portfolio" class="border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
-            
+            <div>
+              <input type="text" id="portfolio" name="portfolio" class="w-full border border-grey py-2 rounded-sm pl-10 focus:border-2 focus::border-grey">
+              @error('portfolio')
+                  {{$message}}
+              @enderror
+            </div>   
             <div class="btns flex gap-4 self-end">
               <button
                 class="px-4 py-2 text-blue bg-grey rounded-md hover:bg-gray hover:shadow-lg"

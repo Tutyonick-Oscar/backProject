@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\devInfosRequest;
+use App\Models\question;
 use Storage;
 use Validator;
 use App\Models\User;
@@ -18,15 +20,18 @@ class AuthController extends Controller
     
     public function profil ($userName) {
         $found = '';
-        $users = User::all('id','name');
+        $user_id = 
+        $users = User::withCount('questions')->get('id','name');
         foreach($users as $user){
             if($user->name == $userName ) {
                 $found = $user;
+                $user_id = $user['id'];
             }
         }
         return view('Auth.profil',[
             'userInfos'=>$found,
             'str'=>Str::class,
+            'questions' => question::where('user_id','=',$user_id)->get(),
         ]);
     }
     public function login () {
@@ -67,12 +72,19 @@ class AuthController extends Controller
         $user->photo()->create($photo);
         if($user->photo->photo!==null){
            $user->photo()->update($photo);           
-        }  
-        
-       
+        }      
         return to_route('profil',Auth::user()->name);
     }
     public function infos ($user) {
         return view('Auth.infos');
+    }
+    public function sendInfos ($user,devInfosRequest $request) {
+        $user_id = Auth::user()->getAuthIdentifier();
+        $user = User::find($user_id);
+        $user->devInfos()->create($request->validated());
+        if ( $user->devInfos->user_id !== null) {
+            $user->devInfos()->update($request->validated());
+        }
+        return to_route('profil',Auth::user()->name);
     }
 }
