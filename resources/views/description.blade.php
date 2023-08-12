@@ -1,5 +1,6 @@
 @extends('layourts.base')
 @section('container')
+@section('title','descriptions')
 <div
 class="container px-4 sm:w-full sm:ml-64 sm:pl-28 sm:flex sm:flex-col sm:justify-center"
 >

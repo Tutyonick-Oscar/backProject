@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[viewsController::class,'questions'])->name('questions')->middleware('auth');
-Route::get('/answer/{id}',[viewsController::class,'answer'])->name('answer');
+Route::get('/answer/{id}',[viewsController::class,'answer'])->name('answer')->middleware('auth');
 Route::get('/ask',[viewsController::class,'ask'])->name('ask-question')->middleware('auth');
 Route::get('/q-descriptions/{id}',[viewsController::class,'descriptions'])->name('descriptions')->middleware('auth');
 Route::post('/ask',[viewsController::class,'send_question']);

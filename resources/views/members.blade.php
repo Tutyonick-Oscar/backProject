@@ -1,5 +1,6 @@
 @extends('layourts.base')
 @section('container')
+@section('title','members')
 <div class="container w-full mt-6 sm:w-4/5 sm:ml-64 sm:flex">
     <div
       class="w-full h-auto flex px-10 justify-center sm:justify-between flex-wrap gap-y-10 sm:pl-10"

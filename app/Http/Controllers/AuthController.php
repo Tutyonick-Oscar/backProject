@@ -18,20 +18,25 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     
-    public function profil ($userName) {
-        $found = '';
+    public function profil ($userName, Request $request) {
+        $founded = '';
         $user_id = 
         $users = User::withCount('questions')->get('id','name');
         foreach($users as $user){
             if($user->name == $userName ) {
-                $found = $user;
+                $founded = $user;
                 $user_id = $user['id'];
             }
         }
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
         return view('Auth.profil',[
-            'userInfos'=>$found,
+            'userInfos'=>$founded,
             'str'=>Str::class,
             'questions' => question::where('user_id','=',$user_id)->get(),
+            'found'=>$found
         ]);
     }
     public function login () {
@@ -75,8 +80,12 @@ class AuthController extends Controller
         }      
         return to_route('profil',Auth::user()->name);
     }
-    public function infos ($user) {
-        return view('Auth.infos');
+    public function infos ($user, Request $request) {
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
+        return view('Auth.infos',compact($found));
     }
     public function sendInfos ($user,devInfosRequest $request) {
         $user_id = Auth::user()->getAuthIdentifier();

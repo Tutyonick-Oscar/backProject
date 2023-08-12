@@ -65,11 +65,38 @@
               srcset=""
             />
           </div>
-          <input
+          <form action="" method="get" class="sm:w-11/12 relative w-4/5">
+            <input
             type="text"
+            name="search"
             placeholder="Search..."
-            class="w-4/5 px-10 pr-40 sm:pr-96 ml-5 sm:ml-10 border border-solid border-blue rounded outline-none py-1 placeholder:-mr-16 hover:shadow-lg hover:py-2"
+            value="{{request()->get('search')}}"
+            class="pl-10  pr-8 text-blue w-11/12 sm:w-full ml-5 sm:ml-10 border border-solid border-blue rounded outline-none  placeholder:-mr-16 hover:shadow-lg py-2 focus:border-2"
           />
+          <i class="fa-solid fa-x text-grey absolute right-5 sm:-right-8 top-3 hover:text-blue cursor-pointer"></i>
+          </form>
+          @if ($found)
+          <div class="found bg-white absolute top-14  left-12 sm:w-11/12 w-4/5 shadow-xl overflow-y-scroll">
+            @forelse($found as $question)        
+            <div class="border-b border-grey">
+              <p class=" text-gray rounded-md px-5 py-1">
+                <a href="{{route('descriptions',$question->id)}}">
+                  {{$question->title}}
+                </a> 
+              </p>
+              <p class=" text-blue rounded-md px-5 py-1">
+                <a href="{{route('descriptions',$question->id)}}">
+                  {{$question->descriptions}} 
+                </a>
+              </p>
+            </div>         
+          @empty
+          <p class=" text-blue rounded-md px-5 py-1">
+            No results found
+          </p>
+          @endforelse
+          </div>  
+          @endif  
           <i
             class="fa-solid fa-magnifying-glass text-blue font-medium absolute left-24 top-5 sm:top-5 sm:left-16"
           ></i>

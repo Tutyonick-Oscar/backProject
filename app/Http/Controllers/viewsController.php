@@ -16,26 +16,45 @@ use Illuminate\Support\Carbon;
 
 class viewsController extends Controller
 {
-    public function questions () {
+    public function questions (Request $request) {
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
         return view('index',[
             'questions'=>question::withCount('views')->get(),
-            'carbon' => Carbon::class,    
+            'carbon' => Carbon::class,
+            'found' =>$found   
         ]);
-    }  
-    public function ask () {
-        return view('ask');
     }
-    public function descriptions ($id) {
+    public function ask (Request $request) {
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
+        return view('ask',compact($found));
+    }
+    public function descriptions ($id, Request $request) {
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
         return view('description',[
             'question'=>question::findOrFail($id),
             'urlImage'=>Storage::url(question::findOrFail($id)->image),
             'answer'=>answer::find($id),
+            'found'=>$found,
         ]);
     }
-    public function answer ($id) {
+    public function answer ($id, Request $request) {
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
         return view('answer',[
             'question'=>question::findOrFail($id),
             'urlImage'=>Storage::url(question::findOrFail($id)->image),
+            'found' =>$found
         ]);
     }
     public function send_question (askQuestionRequest $request) {
@@ -68,14 +87,24 @@ class viewsController extends Controller
         $answer->comments()->create($valid->validated());
         return to_route('questions');
     }
-    public function members () {
+    public function members (Request $request) {
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
         return view('members',[
-            'users'=>User::all()
+            'users'=>User::all(),
+            'found'=>$found,
         ]);
     }
-    public function tags_php() {
+    public function tags_php(Request $request) {
+        $found ='';
+        if ($request->filled('search')) {
+            $found =question::search($request->search)->get();
+        }
         return view('tags.php',[
-            'questions' => question::where('tags','=','php')->withCount('answers')->get(),          
+            'questions' => question::where('tags','=','php')->withCount('answers')->get(), 
+            'found' =>$found         
         ]);
     }
     public function send_view (Request $request,$id) {

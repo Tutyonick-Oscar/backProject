@@ -1,7 +1,6 @@
 @extends('layourts.base') 
 @section('title','profil')
 @section('container')
-{{-- @dd($userInfos->questions) --}}
 <div class="container w-full mt-3 sm:w-4/5 sm:ml-64 sm:flex sm:flex-col">
     <div class="sm:w-full sm:bg-blue sm:h-14">
       <div class="w-full h-32 items-center flex justify-between bg-blue px-4">
