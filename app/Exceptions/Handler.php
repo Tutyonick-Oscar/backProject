@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
+use Route;
 use Throwable;
+use Illuminate\Database\QueryException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -23,8 +27,19 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->reportable(function (Throwable $exception) {
+            dd($exception);
+        });
+        $this->renderable( function(NotFoundHttpException $exception){
+                return response()->view('errors.notFound',[
+                    'exception'=>$exception,
+                    'user'=>Auth::user()
+                ],404);
+        });
+        $this->renderable( function(QueryException $exception){
+                return response()->view('errors.notFound',[
+                    'exception'=>$exception,
+                ],500);
         });
     }
 }
