@@ -1,7 +1,6 @@
 @extends('layourts.base')
 @section('title','Questions')
 @section('container')
-{{-- @dd($carbon::parse($questions->first()->created_at)->diffInYears($carbon::now())) --}}
 <div
 class="container sm:ml-64 flexe flex-col sm:px-8 sm:py-4 font-light w-full p-2"
 >
@@ -65,8 +64,8 @@ class="container sm:ml-64 flexe flex-col sm:px-8 sm:py-4 font-light w-full p-2"
       <p class="title text-white text-start text-lg capitalize">
        {{$question->title}}
       </p>
-      <p class="litle-descript text-blue flex">
-        <p class="text-blue text-sm">{{$question->descriptions}}</p>
+      <p class=" text-blue flex">
+        <p class="litle-descript text-blue text-sm">{{$question->descriptions}}</p>
         <form action="{{route('views',$question->id)}}" method="post">
           @csrf
           <input type="hidden" name="view" value="question viewed">

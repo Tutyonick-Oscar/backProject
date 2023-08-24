@@ -1,3 +1,8 @@
+{{-- @extends('layourts.base')
+@section('title','{{$exception->getName()}}')
+@section('container')
+
+@endsection --}}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
-    <title>@yield('title')</title>
+    <title>Error</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap");
       body {
@@ -41,7 +46,7 @@
         >
           <h1 class="text-white text-lg font-medium">FongOverFlow</h1>
           <img
-            src="/photos/logoWhite.png"
+            src="../photos/logoWhite.png"
             width="30"
             height="30"
             alt=""
@@ -65,16 +70,16 @@
               srcset=""
             />
           </div>
-          <form class="sm:w-11/12 relative w-4/5">
+          {{-- <form class="sm:w-11/12 relative w-4/5">
             <input
             aria-autocomplete="both" enterkeyhint="search" spellcheck="false" autofocus="true"
             type="search"
             name="search"
             placeholder="Search..."
             value="{{request()->get('search')}}"
-            class="input-search pl-10  pr-8 text-blue w-11/12 sm:w-full ml-5 sm:ml-10 border border-solid border-blue rounded outline-none  placeholder:-mr-16 hover:shadow-lg py-2 focus:border-2"
+            class="pl-10  pr-8 text-blue w-11/12 sm:w-full ml-5 sm:ml-10 border border-solid border-blue rounded outline-none  placeholder:-mr-16 hover:shadow-lg py-2 focus:border-2"
           />
-          <i class="x-button fa-solid fa-x text-grey absolute right-5 sm:-right-8 top-3 hover:text-blue cursor-pointer"></i>
+          <i class="fa-solid fa-x text-grey absolute right-5 sm:-right-8 top-3 hover:text-blue cursor-pointer"></i>
           </form>
           
           @if ($found)
@@ -102,7 +107,7 @@
           
           <i
             class="fa-solid fa-magnifying-glass text-blue font-medium absolute left-24 top-5 sm:top-5 sm:left-16"
-          ></i>
+          ></i> --}}
         </div>
         <div
           class="connect hidden sm:flex items-center justify-between w-2/5 gap-10 pr-8"
@@ -278,8 +283,13 @@
           </div>
         </div>
       </div>
-     @yield('container')
+      <div class="text-blue w-full h-screen items-center justify-center sm:ml-72">
+         <h2 class="text-center self-center mt-64 text-2xl">
+             {{$exception->getMessage()}}
+             </h2>
+        </div>
     </main>
   </body>
 </html>
+
 

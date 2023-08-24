@@ -38,7 +38,7 @@
             <p class="text-blue font-bold text-xl">
               Descriptions
             </p>
-            <textarea name="descriptions" id="" cols="30" rows="5" class="
+            <textarea name="descriptions" id="" cols="30" rows="5" class=" text-area
             text-grey border border-blue rounded-md p-4 outline-none hover:border-2">Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20 characters.</textarea>
             @error('descriptions')
                 {{$message}}
@@ -54,11 +54,11 @@
                 {{$message}}
             @enderror
            </div>
-           <div class="tech-details ullistration flex flex-col gap-2 rounded-md border border-grey p-4">
+           <div class="ullistration flex flex-col gap-2 rounded-md border border-grey p-4">
             <p class="text-blue font-bold text-xl">
               Technical Details
             </p>
-            <textarea name="tech_details" id="" cols="30" rows="3" class="
+            <textarea name="tech_details" id="" cols="30" rows="3" class="tech-details
             text-grey border border-blue rounded-md p-4 outline-none hover:border-2">Add some technicals details to specify your question</textarea>
             @error('tech_details')
                 {{$message}}

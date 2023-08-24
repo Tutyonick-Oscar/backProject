@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\searchRequestEvent;
 use Storage;
 use Validator;
 use App\Models\User;
@@ -18,9 +19,13 @@ class viewsController extends Controller
 {
     public function questions (Request $request) {
         $found ='';
-        if ($request->filled('search')) {
-            $found =question::search($request->search)->get();
+        if ($request->has('search')) {
+            event(new searchRequestEvent($request->filled('search'),$request->search)); 
         }
+             
+        // if ($request->filled('search')) {
+        //     $found =question::search($request->search)->get();
+        // }
         return view('index',[
             'questions'=>question::withCount('views')->get(),
             'carbon' => Carbon::class,
@@ -32,7 +37,7 @@ class viewsController extends Controller
         if ($request->filled('search')) {
             $found =question::search($request->search)->get();
         }
-        return view('ask',compact($found));
+        return view('ask',['found'=> $found]);
     }
     public function descriptions ($id, Request $request) {
         $found ='';

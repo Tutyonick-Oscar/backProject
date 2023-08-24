@@ -40,9 +40,9 @@
               @endif  
               
             <div class="flex gap-1 items-center sm:mt-16">
-              <a href="" class="bg-blue items-center px-4 rounded text-grey py-2 sm:px-3 sm:w-52"><i class="fa fa-link"></i> Copy profil link</a>
+              <a href="{{route('profil',$userInfos->name)}}" class="profil-link bg-blue items-center px-4 rounded text-grey py-2 sm:px-3 sm:w-52"><i class="fa fa-link"></i> Copy profil link</a>
               @if ($userInfos->name == Auth::user()->name)
-              <a href="{{route('devInformations',Auth::user()->name)}}" class="bg-blue items-center px-3 text-grey py-2 rounded  sm:w-1/2"><i class="fa fa-pencil"></i> Edit</a>
+              <a href="{{route('devInformations',Auth::user()->name)}}" class=" bg-blue items-center px-3 text-grey py-2 rounded  sm:w-1/2"><i class="fa fa-pencil"></i> Edit</a>
               @endif
             </div>
             </div>

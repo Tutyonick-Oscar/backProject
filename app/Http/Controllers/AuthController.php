@@ -85,7 +85,7 @@ class AuthController extends Controller
         if ($request->filled('search')) {
             $found =question::search($request->search)->get();
         }
-        return view('Auth.infos',compact($found));
+        return view('Auth.infos',['found'=> $found]);
     }
     public function sendInfos ($user,devInfosRequest $request) {
         $user_id = Auth::user()->getAuthIdentifier();
